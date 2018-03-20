@@ -12,5 +12,10 @@ pipeline {
         sh 'mvn compile package'
       }
     }
+    stage('Upload Artifacts') {
+      steps {
+        sh 'mvn package deploy -Drepoid=deployment -Drepouser=admin -Drepopwd=admin123'
+      }
+    }
   }
 }
