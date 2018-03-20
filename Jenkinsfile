@@ -13,6 +13,12 @@ pipeline {
       }
     }
     stage('Upload Artifacts') {
+      agent {
+        node {
+          label 'MAVEN'
+        }
+        
+      }
       steps {
         sh 'mvn package deploy -Drepoid=deployment -Drepouser=admin -Drepopwd=admin123'
       }
